@@ -24,10 +24,20 @@ struct Persona
 		int		telefono;
 };
 
+// Declaraciones de funciones
+void insertarPersona(struct Persona* p, const char* nombre, int telefono);
+void borrarPersona(struct Persona* p);
+void actualizarPersona(struct Persona* p, const char* nuevoNombre, int nuevoTelefono);
+int  compararPorNombre(const void* a, const void* b);
+void ordenarPorNombre(struct Persona personas[], int size);
+int  lanzar_agenda(void);
+
+
 int	main(void)
 {
 		struct Persona persona1;
 		
+		lanzar_agenda();
 		insertarPersona(&persona1, "Pepe", 654729893);
 		return 0;
 }
@@ -66,3 +76,18 @@ void	ordenarPorNombre(struct Persona personas[], int size)
 {
 		qsort(personas, size, sizeof(struct Persona), compararPorNombre);
 }
+
+//Lanzar agenda?
+int	lanzar_agenda(void)
+{
+		printf("Bienvenido a su agenda.\n");
+		printf("#######################\n");
+		printf("#### Elija un modo ####\n");
+		printf("#######################\n");
+		printf("1. Buscar contacto     \n");
+		printf("2. Agregar contacto    \n");
+		printf("3. Actualizar contacto \n");
+		printf("4. Eliminar contacto   \n");
+}
+
+
