@@ -25,7 +25,8 @@ struct Persona
 };
 
 // Declaraciones de funciones
-void insertarPersona(struct Persona* p, const char* nombre, int telefono);
+void buscar_contacto(const char* nombre);
+void agregar_contacto(struct Persona* p, const char* nombre, int telefono);
 void borrarPersona(struct Persona* p);
 void actualizarPersona(struct Persona* p, const char* nuevoNombre, int nuevoTelefono);
 int  compararPorNombre(const void* a, const void* b);
@@ -38,12 +39,12 @@ int	main(void)
 		struct Persona persona1;
 		
 		lanzar_agenda();
-		insertarPersona(&persona1, "Pepe", 654729893);
+		//agregar_contacto(&persona1, "Pepe", 654729893);
 		return 0;
 }
 
 //Inserción
-void	insertarPersona(struct Persona* p, const char* nombre, int telefono)
+void	agregar_contacto(struct Persona* p, const char* nombre, int telefono)
 {
 		strcpy(p->nombre, nombre);
 		p->telefono = telefono;
@@ -77,9 +78,21 @@ void	ordenarPorNombre(struct Persona personas[], int size)
 		qsort(personas, size, sizeof(struct Persona), compararPorNombre);
 }
 
+void	buscar_contacto(const char* nombre)
+{
+		char* n = (char*) nombre;
+
+		scanf("Nombre: %s", n);
+}
+
 //Lanzar agenda?
 int	lanzar_agenda(void)
 {
+		int eleccion;
+		struct	Persona* p;
+		char *nombre;
+		int	telefono;
+
 		printf("Bienvenido a su agenda.\n");
 		printf("#######################\n");
 		printf("#### Elija un modo ####\n");
@@ -88,6 +101,13 @@ int	lanzar_agenda(void)
 		printf("2. Agregar contacto    \n");
 		printf("3. Actualizar contacto \n");
 		printf("4. Eliminar contacto   \n");
+		printf("5. Salir			   \n");
+		scanf("%d", &eleccion);
+		if (eleccion == 1)
+		{
+				printf("Buscar contacto: \n");
+				buscar_contacto(nombre);
+		}
+		else if (eleccion == 2);
+				agregar_contacto(p, nombre, telefono);
 }
-
-
